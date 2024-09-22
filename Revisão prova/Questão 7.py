@@ -4,10 +4,10 @@
 
 
 lista= [
-    ["DOUGLAS", 8],
-    ["PEDRO", 9],
-    ["ERICA", 7],
-    ["RAPHAEL", 6],
+    ['DOUGLAS', 8],
+    ['PEDRO', 9],
+    ['ERICA', 7],
+    ['RAPHAEL', 6],
   
 ]
 
