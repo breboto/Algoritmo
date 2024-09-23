@@ -18,14 +18,12 @@ for x, y in lista:
     
 print (dic)
 
-for i in dic:
-    nome = str(input('Digite o nome do aluno para mudar a nota: ')).upper()
-    if nome in dic:
-        nota = int(input('Digite a nova nota do(a) aluno(a): '))
-        dic.update({nome:nota})
-        break
-    else:
-        print(f'Aluno(a) {nome} não encontrado(a).')
+nome = str(input('Digite o nome do aluno para mudar a nota: ')).upper()
+if nome in dic:
+    nota = int(input('Digite a nova nota do(a) aluno(a): '))
+    dic.update({nome:nota})
+else:
+    print(f'Aluno(a) {nome} não encontrado(a).')
 print (dic)
 
 
