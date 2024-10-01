@@ -74,11 +74,11 @@ def menu():
         escolha = int(input('Escolha uma opção:'))
         
         if escolha == 1:
-            codigo = input('Digite um código: ')
-            cliente = input('Digite o nome do cliente: ')
-            gerente = input('Digite o nome do gerente do projeto: ')
+            codigo = input('Digite um código: ').upper()
+            cliente = input('Digite o nome do cliente: ').capitalize()
+            gerente = input('Digite o nome do gerente do projeto: ').capitalize()
             inicio = input('Digite a data de início do projeto: ')
-            status = input('Digite o status do projeto: ')
+            status = input('Digite o status do projeto: ').capitalize()
             cadastrar_projeto(codigo, cliente, gerente, inicio, status)
 
         if escolha == 2:
@@ -86,17 +86,17 @@ def menu():
              print('-'*30)
 
         if escolha == 3:
-            codigo = input('Digite o código para buscar o projeto: ')
+            codigo = input('Digite o código para buscar o projeto: ').capitalize()
             print('-'*30)
             busca_projeto(projetos, codigo)
         
         if escolha == 4:
             codigo = input('Digite o código do projeto: ')
-            status = input('Digite o novo status para o projeto:')
+            status = input('Digite o novo status para o projeto:').capitalize()
             atualizar_status_projeto(projetos, codigo, status)
 
         if escolha == 5:
-            gerente_contagem = input('Digite o nome do gerente do projeto: ')
+            gerente_contagem = input('Digite o nome do gerente do projeto: ').capitalize()
             contar_projetos_por_gerente(projetos, gerente_contagem)
 
         if escolha == 6:
