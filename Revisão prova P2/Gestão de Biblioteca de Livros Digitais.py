@@ -12,21 +12,20 @@ def ordenar_livros(livros, opcao, ordem):
         return
 
     def partition(livros, low, high, chave, ordem):
-        pivot = livros[high][chave]  # Escolhe o pivô (último elemento)
+        pivot = livros[high][chave]
         i = low - 1  # Índice do menor elemento
         for j in range(low, high):
-            # Se o livro[j] for menor ou maior que o pivô, dependendo da ordem
             if (ordem == "C" and livros[j][chave] <= pivot) or (ordem == "D" and livros[j][chave] >= pivot):
                 i += 1
-                livros[i], livros[j] = livros[j], livros[i]  # Troca os livros
-        livros[i + 1], livros[high] = livros[high], livros[i + 1]  # Coloca o pivô na posição correta
+                livros[i], livros[j] = livros[j], livros[i]  
+        livros[i + 1], livros[high] = livros[high], livros[i + 1]
         return i + 1
 
     def quicksort(livros, low, high, chave, ordem):
         if low < high:
-            pi = partition(livros, low, high, chave, ordem)  # Posição do pivô
-            quicksort(livros, low, pi - 1, chave, ordem)  # Ordena a parte esquerda
-            quicksort(livros, pi + 1, high, chave, ordem)  # Ordena a parte direita
+            pi = partition(livros, low, high, chave, ordem)
+            quicksort(livros, low, pi - 1, chave, ordem)  
+            quicksort(livros, pi + 1, high, chave, ordem) 
 
     quicksort(livros, 0, len(livros) - 1, chave, ordem)
 
