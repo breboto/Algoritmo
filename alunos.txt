@@ -1,0 +1,6 @@
+pedro, 10.00
+Julia, 9.50
+Douglas, 9.50
+Pedro, 9.00
+Douglas, 9.00
+Douglas, 7.00
