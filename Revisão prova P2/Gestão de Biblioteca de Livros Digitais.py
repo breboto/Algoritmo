@@ -40,10 +40,8 @@ def listar_livros(livros):
         for i, livro in enumerate(livros, 1):
             print(f"{i}. Título: {livro['titulo']}, Autor: {livro['autor']}, Ano: {livro['ano']}, Páginas: {livro['paginas']}")
 
-# Funções restantes
 def adicionar_livro(livros, titulo, autor, ano, paginas):
     try:
-        # Criar o dicionário do livro e adicionar à lista
         livro = {"titulo": titulo, "autor": autor, "ano": ano, "paginas": paginas}
         livros.append(livro)
         print("Livro adicionado com sucesso!")
@@ -95,7 +93,6 @@ def validar_int_positivo(prompt):
 def menu():
     livros = []
     
-    # Carregar livros do arquivo
     livros = carregar_livros()
 
     while True:
