@@ -2,8 +2,7 @@ def ordenar_livros(livros, opcao, ordem):
     if len(livros) == 0:
         print("Nenhum livro cadastrado para ordenar.")
         return
-
-    # Definir a chave para a ordenação: ano ou páginas
+        
     if opcao == "1":
         chave = "ano"
     elif opcao == "2":
@@ -12,7 +11,6 @@ def ordenar_livros(livros, opcao, ordem):
         print("Opção inválida de ordenação!")
         return
 
-    # Função de Partição (Partition)
     def partition(livros, low, high, chave, ordem):
         pivot = livros[high][chave]  # Escolhe o pivô (último elemento)
         i = low - 1  # Índice do menor elemento
@@ -24,17 +22,14 @@ def ordenar_livros(livros, opcao, ordem):
         livros[i + 1], livros[high] = livros[high], livros[i + 1]  # Coloca o pivô na posição correta
         return i + 1
 
-    # Função Quicksort (in-place)
     def quicksort(livros, low, high, chave, ordem):
         if low < high:
             pi = partition(livros, low, high, chave, ordem)  # Posição do pivô
             quicksort(livros, low, pi - 1, chave, ordem)  # Ordena a parte esquerda
             quicksort(livros, pi + 1, high, chave, ordem)  # Ordena a parte direita
 
-    # Executa o Quicksort na lista de livros
     quicksort(livros, 0, len(livros) - 1, chave, ordem)
 
-    # Exibe os livros ordenados
     print("Livros ordenados com sucesso!")
     listar_livros(livros)
 
