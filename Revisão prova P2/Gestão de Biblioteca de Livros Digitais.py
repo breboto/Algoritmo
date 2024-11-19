@@ -2,8 +2,7 @@ def ordenar_livros(livros, opcao, ordem):
     if len(livros) == 0:
         print("Nenhum livro cadastrado para ordenar.")
         return
-
-    # Definir a chave para a ordenação: ano ou páginas
+        
     if opcao == "1":
         chave = "ano"
     elif opcao == "2":
@@ -12,29 +11,24 @@ def ordenar_livros(livros, opcao, ordem):
         print("Opção inválida de ordenação!")
         return
 
-    # Função de Partição (Partition)
     def partition(livros, low, high, chave, ordem):
-        pivot = livros[high][chave]  # Escolhe o pivô (último elemento)
+        pivot = livros[high][chave]
         i = low - 1  # Índice do menor elemento
         for j in range(low, high):
-            # Se o livro[j] for menor ou maior que o pivô, dependendo da ordem
             if (ordem == "C" and livros[j][chave] <= pivot) or (ordem == "D" and livros[j][chave] >= pivot):
                 i += 1
-                livros[i], livros[j] = livros[j], livros[i]  # Troca os livros
-        livros[i + 1], livros[high] = livros[high], livros[i + 1]  # Coloca o pivô na posição correta
+                livros[i], livros[j] = livros[j], livros[i]  
+        livros[i + 1], livros[high] = livros[high], livros[i + 1]
         return i + 1
 
-    # Função Quicksort (in-place)
     def quicksort(livros, low, high, chave, ordem):
         if low < high:
-            pi = partition(livros, low, high, chave, ordem)  # Posição do pivô
-            quicksort(livros, low, pi - 1, chave, ordem)  # Ordena a parte esquerda
-            quicksort(livros, pi + 1, high, chave, ordem)  # Ordena a parte direita
+            pi = partition(livros, low, high, chave, ordem)
+            quicksort(livros, low, pi - 1, chave, ordem)  
+            quicksort(livros, pi + 1, high, chave, ordem) 
 
-    # Executa o Quicksort na lista de livros
     quicksort(livros, 0, len(livros) - 1, chave, ordem)
 
-    # Exibe os livros ordenados
     print("Livros ordenados com sucesso!")
     listar_livros(livros)
 
@@ -45,10 +39,8 @@ def listar_livros(livros):
         for i, livro in enumerate(livros, 1):
             print(f"{i}. Título: {livro['titulo']}, Autor: {livro['autor']}, Ano: {livro['ano']}, Páginas: {livro['paginas']}")
 
-# Funções restantes
 def adicionar_livro(livros, titulo, autor, ano, paginas):
     try:
-        # Criar o dicionário do livro e adicionar à lista
         livro = {"titulo": titulo, "autor": autor, "ano": ano, "paginas": paginas}
         livros.append(livro)
         print("Livro adicionado com sucesso!")
@@ -100,7 +92,6 @@ def validar_int_positivo(prompt):
 def menu():
     livros = []
     
-    # Carregar livros do arquivo
     livros = carregar_livros()
 
     while True:
